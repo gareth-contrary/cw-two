@@ -1,5 +1,5 @@
-
+package coursework
 
 trait Feedback {
-  def feedback: Seq[FeedbackPeg]
+  def getFeedback(code: Seq[Peg], guess: Seq[Peg]): Seq[FeedbackPeg]
 }

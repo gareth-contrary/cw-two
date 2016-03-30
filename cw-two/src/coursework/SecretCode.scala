@@ -1,5 +1,5 @@
-
+package coursework
 
 trait SecretCode {
-  def secretCode: Seq[Peg]
+  def generateCode(rowSize: Int): Seq[Peg]
 }

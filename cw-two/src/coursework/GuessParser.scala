@@ -1,6 +1,6 @@
-
+package coursework
 
 trait GuessParser {
-  def isValid(): Boolean
-  def parse(): Seq[Peg]
+  def isValid(guess: String, rowSize: Int): Boolean
+  def parse(guess: String): Seq[Peg]
 }

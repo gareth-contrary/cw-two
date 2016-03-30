@@ -1,5 +1,5 @@
-
+package coursework
 
 trait Guess {
-  val guess: Seq[Peg]
+  def requestGuess(rowSize: Int): Seq[Peg]
 }

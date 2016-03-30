@@ -1,4 +1,4 @@
-
+package coursework
 
   sealed trait Peg {
     val colour: String
@@ -17,7 +17,7 @@
   case class BlackFeedbackPeg(colour: String = "Black") extends FeedbackPeg
   case class EmptyFeedbackPeg(colour: String = "Empty") extends FeedbackPeg
   
-  object PegFactory {
+  object Peg {
     def getPegWithInt(x: Int): Peg = math.abs(x) % 6 match {
       case 0 => YellowPeg()
       case 1 => RedPeg()

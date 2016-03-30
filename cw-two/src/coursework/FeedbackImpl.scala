@@ -1,17 +1,16 @@
+package coursework
 
-
-case class FeedbackImpl(code: SecretCode, guess: Guess) extends Feedback{
-  val feedback: Seq[FeedbackPeg] = makePegs(code.secretCode, guess.guess)
+case class FeedbackImpl() extends Feedback{
+  def getFeedback(code: Seq[Peg], guess: Seq[Peg]): Seq[FeedbackPeg] = makePegs(code, guess)
   
-  def whitePegCreator(code:Seq[Peg],guess:Seq[Peg]):Seq[FeedbackPeg]={
+  private def whitePegCreator(code:Seq[Peg],guess:Seq[Peg]):Seq[FeedbackPeg]={
     var result:Seq[FeedbackPeg] = Nil
       for(p <- code){
         var found:Boolean = false
         for(g <- guess){
           if(p.colour.equals(g.colour) && !found){
-            if(code.indexOf(p) != guess.indexOf(g)){
-              
-              result = result :+ PegFactory.getFeedbackPeg("White")
+            if(code.indexOf(p) != guess.indexOf(g)){             
+              result = result :+ Peg.getFeedbackPeg("White")
               found =true
             }
           }
@@ -19,29 +18,22 @@ case class FeedbackImpl(code: SecretCode, guess: Guess) extends Feedback{
       }
     result
   }
-
-  override def toString(): String = {
-    var result = ""
-    for (peg <- feedback)
-      result += peg + " "
-    result
-  }
-  
- def blackPeg(code: Peg, guess: Peg): FeedbackPeg = {
+ 
+ private def blackPeg(code: Peg, guess: Peg): FeedbackPeg = {
     if (code.toString().equals(guess.toString())) {
-      PegFactory.getFeedbackPeg("Black")
+      Peg.getFeedbackPeg("Black")
     } else {
-      PegFactory.getFeedbackPeg("Empty")
+      Peg.getFeedbackPeg("Empty")
     }
   }
  
-  def getLeftovers(blacks: Seq[FeedbackPeg], code: Seq[Peg]): Seq[Peg] = {
+  private def getLeftovers(blacks: Seq[FeedbackPeg], code: Seq[Peg]): Seq[Peg] = {
     val seq = blacks.zip(code)
     val leftovers = for ((black, codePeg) <- seq; if (black.toString().equals("Empty"))) yield codePeg
     leftovers
   }
  
-  def makePegs(secret:Seq[Peg],guess:Seq[Peg]):Seq[FeedbackPeg]={
+  private def makePegs(secret:Seq[Peg],guess:Seq[Peg]):Seq[FeedbackPeg]={
     val seqs = secret.zip(guess)
     val blacks = for ((secret, guess) <- seqs) yield blackPeg(secret, guess)
     val leftoverCode = getLeftovers(blacks, secret)

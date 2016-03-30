@@ -1,17 +1,10 @@
-
+package coursework
 
 import scala.util.Random
 
-class SecretCodeImpl(rowSize: Int) extends SecretCode {
-  val secretCode = {
+class SecretCodeImpl() extends SecretCode {
+  def generateCode(rowSize: Int): Seq[Peg] = {
     val r = Random
-    for(i <- 1 to rowSize) yield PegFactory.getPegWithInt(r.nextInt())
-  }
-  
-  override def toString(): String = {
-    var result = ""
-    for (peg <- secretCode)
-      result += peg
-    result
+    for(i <- 1 to rowSize) yield Peg.getPegWithInt(r.nextInt())
   }
 }

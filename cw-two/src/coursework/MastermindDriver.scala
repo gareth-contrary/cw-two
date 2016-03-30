@@ -1,4 +1,4 @@
-
+package coursework
 
 object MastermindDriver {
   def main(args: Array[String]) {

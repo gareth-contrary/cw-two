@@ -1,4 +1,4 @@
-
+package coursework
 
 abstract class GameAbstractImpl extends Game {
   private var showCode: Boolean = false

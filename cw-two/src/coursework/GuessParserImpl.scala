@@ -1,22 +1,24 @@
+package coursework
 
+import com.google.inject.Inject;
 
-class GuessParserImpl(guess: String, rowSize: Int) extends GuessParser {
-  def isValid(): Boolean = {
+class GuessParserImpl() extends GuessParser {
+  def isValid(guess: String, rowSize: Int): Boolean = {
     val characters = guess.toCharArray()
     if(characters.size != rowSize) {
       false
     } else {
       for(letter <- characters) {
-        if (PegFactory.getPegWithLetter(letter.toString).isEmpty) {
-          return false
+        if (Peg.getPegWithLetter(letter.toString).isEmpty) {
+          false
         }
       }
       true
     }
   }
   
-  def parse(): Seq[Peg] = {
+  def parse(guess: String): Seq[Peg] = {
     val characters = guess.toCharArray()
-    for (letter <- characters) yield PegFactory.getPegWithLetter(letter.toString).get
+    for (letter <- characters) yield Peg.getPegWithLetter(letter.toString).get
   }
 }
