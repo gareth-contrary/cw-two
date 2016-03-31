@@ -6,10 +6,11 @@ import com.google.inject.Inject;
  * A version of Mastermind which does not display the Secret Code.
  * 
  * @param guess the service to request guesses from a user. Injected by Google Guice, @see GameModule.
- * @param feedback the service to produce Mastermind feedback. Injected by Google Guice, see GameModule.
- * @param secretCode the service to produce a secret Mastermind code. Injected by Google Guice, see GameModule.
+ * @param feedback the service to produce Mastermind feedback. Injected by Google Guice, @see GameModule.
+ * @param secretCode the service to produce a secret Mastermind code. Injected by Google Guice, @see GameModule.
  */
 class HardGame @Inject() (guess: Guess, feedback: Feedback, secretCode: SecretCode) extends GameAbstractImpl() {
+  //the number od Pegs used in this Game.
   val rowSize = 4
   val code = secretCode.generateCode(rowSize)
   val nrOfGuesses = 12
@@ -52,6 +53,11 @@ class HardGame @Inject() (guess: Guess, feedback: Feedback, secretCode: SecretCo
     }  
   }
   
+   /**
+    * Requests a guess from the user.
+    * 
+    * @return true if the guess was correct.
+    */
    private def makeGuess(): Boolean = {
      val newGuess =  guess.requestGuess(rowSize)
      val newFeedback = feedback.getFeedback(code, newGuess)
