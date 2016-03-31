@@ -3,6 +3,11 @@ package coursework
 import com.google.inject.Inject;
 import scala.io.StdIn.readLine
 
+/**
+ * Implements the trait Guess.
+ * 
+ * @param parser a parser object to validate user input and turn user input in a sequence of pegs.
+ */
 class GuessImpl @Inject() (parser: GuessParser) extends Guess {
   
   def requestGuess(rowSize: Int): Seq[Peg] = {
