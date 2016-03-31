@@ -9,20 +9,20 @@ package coursework
     override def toString = colour
   }
 
-  case class YellowPeg(colour: String = "Y") extends Peg
-  case class RedPeg(colour: String = "R") extends Peg
-  case class BluePeg(colour: String = "B") extends Peg
-  case class GreenPeg(colour: String = "G") extends Peg
-  case class OrangePeg(colour: String = "O") extends Peg
-  case class PurplePeg(colour: String = "P") extends Peg
+  final case class YellowPeg(colour: String = "Y") extends Peg
+  final case class RedPeg(colour: String = "R") extends Peg
+  final case class BluePeg(colour: String = "B") extends Peg
+  final case class GreenPeg(colour: String = "G") extends Peg
+  final case class OrangePeg(colour: String = "O") extends Peg
+  final case class PurplePeg(colour: String = "P") extends Peg
   
   /**
    * Pegs used exclusively in Feedback.
    */
   sealed trait FeedbackPeg extends Peg
-  case class WhiteFeedbackPeg(colour: String = "White") extends FeedbackPeg
-  case class BlackFeedbackPeg(colour: String = "Black") extends FeedbackPeg
-  case class EmptyFeedbackPeg(colour: String = "Empty") extends FeedbackPeg
+  final case class WhiteFeedbackPeg(colour: String = "White") extends FeedbackPeg
+  final case class BlackFeedbackPeg(colour: String = "Black") extends FeedbackPeg
+  final case class EmptyFeedbackPeg(colour: String = "Empty") extends FeedbackPeg
   
   /**
    * Companion object for instantiating pegs.

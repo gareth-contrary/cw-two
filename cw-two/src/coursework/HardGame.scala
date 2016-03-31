@@ -10,7 +10,7 @@ import com.google.inject.Inject;
  * @param secretCode the service to produce a secret Mastermind code. Injected by Google Guice, @see GameModule.
  */
 class HardGame @Inject() (guess: Guess, feedback: Feedback, secretCode: SecretCode) extends GameAbstractImpl() {
-  //the number od Pegs used in this Game.
+  //the number of Pegs used in this Game.
   val rowSize = 4
   val code = secretCode.generateCode(rowSize)
   val nrOfGuesses = 12
