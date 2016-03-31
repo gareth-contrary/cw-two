@@ -2,6 +2,9 @@ package coursework
 
 import com.google.inject.Inject;
 
+/**
+ * Implements the trait GuessParser.
+ */
 class GuessParserImpl() extends GuessParser {
   def isValid(guess: String, rowSize: Int): Boolean = {
     val characters = guess.toCharArray()
